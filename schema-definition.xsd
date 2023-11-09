@@ -32,8 +32,8 @@
                     </xs:element>
                     <xs:element name="passingtimes">
                       <xs:complexType>
-                        <xs:choice maxOccurs="unbounded" minOccurs="0">
-                          <xs:element name="vehicle">
+                        <xs:sequence>
+                          <xs:element name="vehicle" maxOccurs="unbounded" minOccurs="0">
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:element name="destination" minOccurs="0">
@@ -46,7 +46,7 @@
                                     </xs:simpleContent>
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element type="xs:dateTime" name="expectedArrivalTime"/>
+                                <xs:element type="xs:dateTime" name="expectedArrivalTime" minOccurs="0"/>
                                 <xs:element name="lineId">
                                   <xs:complexType>
                                     <xs:simpleContent>
@@ -56,32 +56,22 @@
                                     </xs:simpleContent>
                                   </xs:complexType>
                                 </xs:element>
+                                <xs:element name="message" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="en" use="optional"/>
+                                        <xs:attribute type="xs:string" name="fr" use="optional"/>
+                                        <xs:attribute type="xs:string" name="nl" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
                               </xs:sequence>
                               <xs:attribute type="xs:byte" name="vehicle_number" use="optional"/>
                             </xs:complexType>
                           </xs:element>
-                          <xs:element type="xs:dateTime" name="expectedArrivalTime"/>
-                          <xs:element name="lineId">
-                            <xs:complexType>
-                              <xs:simpleContent>
-                                <xs:extension base="xs:string">
-                                  <xs:attribute type="xs:byte" name="id"/>
-                                </xs:extension>
-                              </xs:simpleContent>
-                            </xs:complexType>
-                          </xs:element>
-                          <xs:element name="message">
-                            <xs:complexType>
-                              <xs:simpleContent>
-                                <xs:extension base="xs:string">
-                                  <xs:attribute type="xs:string" name="en" use="optional"/>
-                                  <xs:attribute type="xs:string" name="fr" use="optional"/>
-                                  <xs:attribute type="xs:string" name="nl" use="optional"/>
-                                </xs:extension>
-                              </xs:simpleContent>
-                            </xs:complexType>
-                          </xs:element>
-                        </xs:choice>
+                        </xs:sequence>
                       </xs:complexType>
                     </xs:element>
                     <xs:element name="lineid">
