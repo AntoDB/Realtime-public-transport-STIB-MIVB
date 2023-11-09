@@ -1,0 +1,103 @@
+body {
+    font-family: Brusseline,Arial,Helvetica,sans-serif;
+    color: #474747;
+}
+
+p {
+    font-size: 2rem;
+    margin: 0.4em 0;
+}
+
+@font-face {
+	font-family: Brusseline;
+	font-weight: 400;
+	font-style: italic;
+	src: url(../fonts/brusselineita-webfont.woff) format("woff"), url(../fonts/brusselineita-webfont.ttf) format("truetype")
+}
+
+@font-face {
+	font-family: Brusseline;
+	font-weight: 400;
+	font-style: normal;
+	src: url(../fonts/brusseline-webfont.woff) format("woff"), url(../fonts/brusseline-webfont.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: stibIcons;
+    font-weight: 400;
+    font-style: normal;
+    src: url(../fonts/stibIcons.woff) format("woff"), url(../fonts/stibIcons.ttf) format("truetype")
+}
+
+.lines {
+    display: flex;
+}
+
+.line {
+    margin-right: 5px;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    line-height: 3.2rem;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.direction {
+    line-height: 3rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.line.line-1 {
+    background: #c4008f;
+    color: #fff;
+}
+.line.line-5 {
+    background: #E6B012;
+    color: #fff;
+}
+.line.line-36 {
+    background: #9ebfe3;
+    color: #000;
+}
+.line.line-39 {
+    background: #DE3B21;
+    color: #fff;
+}
+
+.icon-now:before {
+    font-family: stibIcons;
+    color: #d62027;
+    content: "";
+}
+
+/*.icon-now {
+    content: "";
+}*/
+
+/* TABLE */
+td{
+    padding: 0 15px;
+}
+
+h2{
+    font-size: 3rem;
+    padding: 20px;
+    margin: 0;
+}
+
+/* MESSAGE (Alert) */
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

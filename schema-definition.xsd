@@ -1,0 +1,67 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:short" name="nhits"/>
+        <xs:element name="parameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="dataset"/>
+              <xs:element type="xs:string" name="lang"/>
+              <xs:element type="xs:short" name="rows"/>
+              <xs:element type="xs:byte" name="start"/>
+              <xs:element type="xs:string" name="format"/>
+              <xs:element type="xs:string" name="timezone"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="records">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fields" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:short" name="pointid"/>
+                    <xs:element name="passingtimes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="vehicle" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="destination" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="fr"/>
+                                      <xs:element type="xs:string" name="nl"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:dateTime" name="expectedArrivalTime"/>
+                                <xs:element type="xs:byte" name="lineId"/>
+                                <xs:element name="message" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="en"/>
+                                      <xs:element type="xs:string" name="fr"/>
+                                      <xs:element type="xs:string" name="nl"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:byte" name="vehicle_number" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="lineid"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
