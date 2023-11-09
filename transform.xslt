@@ -43,7 +43,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                             <xsl:text></xsl:text>
                             <xsl:value-of select="@vehicle_number"/>
                         </xsl:attribute>
-                        <xsl:if test="./message/fr">
+                        <xsl:if test="./message/@fr">
                             <xsl:attribute name="class">
                                 <xsl:text>message</xsl:text>
                             </xsl:attribute>
@@ -68,10 +68,10 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                             <p class="lefttime"><xsl:value-of select="./expectedArrivalTime"/></p>
                         </td>
                     </tr>
-                    <xsl:if test="./message/fr">
+                    <xsl:if test="./message/@fr">
                         <tr>
                             <td colspan="2">
-                                <div class="alert alert-danger"><xsl:value-of select="./message/fr"/></div>
+                                <div class="alert alert-danger"><xsl:value-of select="./message/@fr"/></div>
                             </td>
                         </tr>
                     </xsl:if>
