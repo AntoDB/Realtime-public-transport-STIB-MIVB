@@ -7,6 +7,18 @@ import time # To redo the code every X second(s)
 import mysql.connector # For the Maria database
 from datetime import datetime # Parse to datetime for DB
 
+import json
+
+# Load the configuration from the JSON file
+with open('./config.json') as config_file:
+    config = json.load(config_file)
+
+# Access the values
+api_key = config['API_KEY']
+db_user = config['DB_USER']
+db_password = config['DB_PASSWORD']
+
+
 # Define the API URL and query parameters
 url = 'https://stibmivb.opendatasoft.com/api/records/1.0/search/'
 params = {
@@ -18,7 +30,7 @@ params = {
 
 # Define the headers with your API key
 headers = {
-    'Authorization': '[AUTH KEY HERE]',
+    'Authorization': api_key,
 }
 
 # Define the list of allowed "pointid" values (pointid is the dock of a transport line for an unique direction)
@@ -168,8 +180,8 @@ def create_database_and_tables():
     # Connect to MariaDB (you can use different parameters if necessary)
     connection = mysql.connector.connect(
         host="localhost",  # Use the Docker container's hostname or IP
-        user="root",  # Use the appropriate MariaDB username
-        password="[ROOT PASSWORD HERE]"  # Replace with your database password
+        user= db_user,  # Use the appropriate MariaDB username
+        password= db_password  # Replace with your database password
     )
     
     # Create a cursor object to execute SQL statements
@@ -269,7 +281,6 @@ if __name__ == "__main__":
 
 # ===== NEXT UPDATES ===== #
 
-# Add attribute for single data
-# Remove auth key api (other file) & database password
-# Get if the database, good set, etc
+# Add attribute for single data. eg.: lineid
+# Get if the database was good set, data pushed, etc
 # In the JS: Sorted by current time
