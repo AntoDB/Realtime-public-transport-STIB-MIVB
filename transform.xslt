@@ -53,14 +53,14 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                                 <div>
                                     <xsl:attribute name="class">
                                         <xsl:text>line line-</xsl:text>
-                                        <xsl:value-of select="./lineId"/>
+                                        <xsl:value-of select="./lineId/@id"/> <!-- Access and output the "id" attribute of lineId -->
                                     </xsl:attribute>
                                     <span>
-                                        <xsl:value-of select="./lineId"/>
+                                        <xsl:value-of select="./lineId/@id"/> <!-- Access and output the "id" attribute of lineId -->
                                     </span>
                                 </div>
                                 <h1 class="direction">
-                                    <xsl:value-of select="./destination/fr"/>
+                                    <xsl:value-of select="./destination/@fr"/> <!-- Access and output the "fr" attribute of destination -->
                                 </h1>
                             </div>
                         </td>

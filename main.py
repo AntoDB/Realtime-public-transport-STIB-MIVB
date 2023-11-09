@@ -59,6 +59,20 @@ def json_to_xml(json_data, parent=None):
                         element = ET.Element(key)
                         parent.append(element)
                         json_to_xml(value, element)
+                
+                # ----- To set the data into attribute of tag -----#
+                elif key == "pointid" or key == "lineId" or key == "lineid":
+                    # Create an XML element with an "id" attribute
+                    element = ET.Element(key, id=str(value))
+                    parent.append(element)
+                elif key == "destination":
+                    # Create an XML element with an "fr" and "nl" attribute
+                    element = ET.Element(key, fr=str(value["fr"]), nl=str(value["nl"]))
+                    parent.append(element)
+                elif key == "message":
+                    # Create an XML element with an "en", "fr" and "nl" attribute
+                    element = ET.Element(key, en=str(value["en"]), fr=str(value["fr"]), nl=str(value["nl"]))
+                    parent.append(element)
 
                 else:
                     element = ET.Element(key)
@@ -167,8 +181,10 @@ def main():
             print(Fore.GREEN + "Transformed XML to XHTML and saved as output.xhtml." + Fore.RESET)
         else:
             print(Fore.RED + "Stop code here (not put data into a DB and not create website)." + Fore.RESET)
+            exit()
     else:
         print(f"{Fore.RED} Request failed with status code: {Fore.RESET}\n{response.status_code}")
+        exit()
 
 # ===================== #
 #        DataBase
@@ -181,7 +197,7 @@ def create_database_and_tables():
     connection = mysql.connector.connect(
         host="localhost",  # Use the Docker container's hostname or IP
         user= db_user,  # Use the appropriate MariaDB username
-        password= db_password  # Replace with your database password
+        password= db_password  # Replace with your database password into the config.json file
     )
     
     # Create a cursor object to execute SQL statements
@@ -240,18 +256,18 @@ def update_database():
 
     # Iterate over the XML data and insert into the database
     for field in root.findall(".//fields"):
-        pointid = field.find(".//pointid").text
+        pointid = field.find(".//pointid").get("id") #get for the attribute
 
         for vehicle in field.findall(".//vehicle"):
-            lineId = vehicle.find(".//lineId").text
+            lineId = vehicle.find(".//lineId").get("id")
 
-            destination_elm = vehicle.find(".//destination/fr")
-            destination = destination_elm.text if destination_elm is not None else ""
+            destination_elm = vehicle.find(".//destination")
+            destination = destination_elm.get("fr") if destination_elm is not None else ""
 
             expectedArrivalTime = vehicle.find(".//expectedArrivalTime").text
 
-            message_element = vehicle.find(".//message/fr")
-            message = message_element.text if message_element is not None else ""
+            message_element = vehicle.find(".//message")
+            message = message_element.get("fr") if message_element is not None else ""
 
             # Insert data into tables
             insert_point_data(cursor, pointid, lineId, destination)
