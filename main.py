@@ -297,6 +297,5 @@ if __name__ == "__main__":
 
 # ===== NEXT UPDATES ===== #
 
-# Add attribute for single data. eg.: lineid
-# Get if the database was good set, data pushed, etc
 # In the JS: Sorted by current time
+# Get if the database was good set, data pushed, etc

@@ -41,6 +41,9 @@ function sortTableByLefttime() {
     elementsWithTime.forEach(function(elementWithTime) {
         table.appendChild(elementWithTime.element.parentElement.parentElement);
     });
+
+// ----- Change because alert/message doesn't follow the good vehicule (due to not have a lefttime classname) ----- //
+
 }
 
 // ====== Display the hour into the timeleft minute and removing the vehicule that aren't comming if there are any alert/message ===== //
