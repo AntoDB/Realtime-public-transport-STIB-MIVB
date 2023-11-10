@@ -37,6 +37,10 @@ As the API returns a time of passage and not the time remaining, I have estimate
 9. Responsive Design: The project have a responsive design to adapt to different screen sizes and devices.
 10. XML Namespace: The HTML document includes XML namespaces (e.g., xmlns and xmlns:xs), which may be used for validation or other purposes.
 
+## Images
+One screenshot of the XHTML page the evening with different alerts/messages ("End of service", "Last departure", etc)
+![Screenshot of website the evening](https://raw.githubusercontent.com/AntoDB/Realtime-public-transport-STIB-MIVB/main/readme_images/Rendu%20le%20soir.png)
+
 ## Tags
 <span>Developed with : <a href="https://code.visualstudio.com/" target="_blank"><image src="https://img.shields.io/badge/Visual Studio Code-v1.84.1-007ACC.svg?logo=visual-studio-code&logoColor=007ACC&style=flat"></a></span>
 
