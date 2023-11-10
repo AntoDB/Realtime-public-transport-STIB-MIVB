@@ -1,5 +1,5 @@
 # Realtime-public-transport-STIB-MIVB
-Courses project (Data exchange and database courses)
+Courses project (Data exchange and database courses) in industrial IT engineer (HE2B - ISIB) in first master.
 
 ## Instructions
 The aim of the project is to exchange data between two databases.
